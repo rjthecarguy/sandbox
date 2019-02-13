@@ -11,6 +11,8 @@ export class UsersComponent implements OnInit {
   users: User[];
   showExtended: boolean = true;
   enableAdd: boolean = true;
+  showUserForm: boolean = false;
+
   constructor() { }
 
   ngOnInit() {
@@ -24,7 +26,8 @@ export class UsersComponent implements OnInit {
             street: '25577 Cottonwood Rd',
             city: 'Loma Linda',
             state: 'CA'
-      }
+      },
+      hide: true
     },
 
     {
@@ -35,7 +38,8 @@ export class UsersComponent implements OnInit {
           street: '123 Disney',
           city: 'Anaheim',
           state: 'CA'
-    }
+    },
+    hide: true
   },
   {
     firstName: 'Daffy',
@@ -45,7 +49,8 @@ export class UsersComponent implements OnInit {
         street: '564 Oak Street',
         city: 'Burbank',
         state: 'CA'
-  }
+  },
+  hide: true
 
 }
 
@@ -53,4 +58,11 @@ export class UsersComponent implements OnInit {
 
   }
 
+  toggleHide(user) {
+    user.hide = !user.hide;
+  }
+
+  onSubmit() {
+
+  }
 }

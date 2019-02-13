@@ -1,13 +1,29 @@
-<h2>Users</h2>
+ <button (click)="showUserForm = !showUserForm" class="btn btn-dark mb-3 mt-3">Add User</button>
+<div class="card card-body mb-3" *ngIf="showUserForm">
 
-<button [disabled]="!enableAdd" class="btn btn-light btn-block mb-3">Add New User</button>
+  <h2>Add User</h2>
+
+  <form (submit) ="onSubmit">
+    <div class="form-group">
+      <label>First Name</label>
+      <input type="text" class="form-control" name="firstName">
+
+
+    </div>
+  </form>
+
+  <button [disabled]="!enableAdd" class="btn btn-light btn-block mb-3">Add New User</button>
+</div>
+
+
+
 
 <ul class="list-unstyled">
   <li class="card card-body mb-2" *ngFor="let user of users">
 
-    <h3>{{user.firstName}}  {{user.lastName}}</h3>
+    <h3>{{user.firstName}}  {{user.lastName}}<small><Button (click)="toggleHide(user)" class="btn-dark btn-sm ml-2"><i [ngClass] = "user.hide ? 'fa fa-plus' : 'fa fa-minus'"></i></Button></small></h3>
 
-    <ul class="list-group">
+    <ul class="list-group" *ngIf="!user.hide">
       <li class="list-group-item">Age: {{user.age}}</li>
     </ul>
 
